@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import Expenses from "./components/Expenses/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
+
+const App = () => {
+  const expenses = [
+    {
+      date: new Date(2023, 9, 6),
+      title: 'New book',
+      price: 39.99
+    },
+    {
+      date: new Date(2023, 9, 6),
+      title: 'New bag',
+      price: 59.99
+    }
+  ]
+
+  const addExpensehandler = (expense) => {
+    console.log('In App.js')
+    console.log(expense)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NewExpense onAddExpense={addExpensehandler}></NewExpense>
+        <Expenses expenses={expenses}></Expenses>
     </div>
   );
 }
