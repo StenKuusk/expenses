@@ -2,17 +2,9 @@ import React from "react";
 import ExpenseItem from "./ExpenseItem";
 import "./ExpensesList.css"
 
-const ExpensesList = () => {
-	let expensesContent = <p>No expenses found.</p>
-	if(filteredExpenses.length > 0) {
-		expensesContent = filteredExpenses.map((expense) => {
-			return <ExpenseItem
-				id={expense.id}
-				title={expense.title}
-				amount={expense.amount}
-				date={expense.date}
-			><ExpenseItem>
-		})
+const ExpensesList = (props) => {
+	if(props.filteredExpenses.length === 0) {
+		return <p className="expenses-list__fallback">No expenses found.</p>
 	}
 
 	return (
@@ -29,6 +21,5 @@ const ExpensesList = () => {
 			}
 		</ul>
 	)
-
 }
 export default ExpensesList

@@ -15,13 +15,17 @@ const Expenses = (props) => {
 		setFilteredYear(year)
 	}
 
-	letexpensesContent = <p>No expenses found.</p>
+	const filteredExpenses = props.expenses.filter((expense) => {
+		return expense.date.getFullYear().toString() === filteredYear			
+	})
+
+	let expensesContent = <p>No expenses found.</p>
 	if(filteredExpenses.length > 0) {
 		expensesContent = filteredExpenses.map((expense) => {
 			return <ExpenseItem
 				id={expense.id}
 				title={expense.title}
-				amount={expense.amount}
+				amount={expense.price}
 				date={expense.date}
 			></ExpenseItem>
 		})
@@ -35,5 +39,5 @@ const Expenses = (props) => {
 	)
 }
 
-export default Expenses}
+export default Expenses
 				
